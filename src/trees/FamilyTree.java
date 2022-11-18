@@ -44,7 +44,7 @@ public class FamilyTree
         TreeNode getNodeWithName(String targetName)
         {
             // Does this node have the target name?
-            if (parent.getName().equals(targetName)) {
+            if (name.equals(targetName)) {
                 return this;
             }
                     
@@ -68,7 +68,7 @@ public class FamilyTree
         ArrayList<TreeNode> collectAncestorsToList()
         {
             ArrayList<TreeNode> ancestors = new ArrayList<>();
-            TreeNode current = new TreeNode(children.get(-1).getName());
+            TreeNode current = new TreeNode(children.get(children.size() - 1).getName());
             for(int i = children.size()-1; i > 0; i--) {
             	ancestors.add(children.get(i).parent);
             }
@@ -120,7 +120,7 @@ public class FamilyTree
 
 		// Parse the input file. Create a FileReader that reads treeFile. Create a BufferedReader
 		// that reads from the FileReader.
-		FileReader fr = new FileReader("BagginsFamilyTree.txt");
+		FileReader fr = new FileReader(treeFile);
 		BufferedReader br = new BufferedReader(fr);
 		String line;
 		while ((line = br.readLine()) != null)
@@ -155,7 +155,7 @@ public class FamilyTree
 			parentNode = root = new TreeNode(parent);
 		else
 		{
-			parentNode = root.getNodeWithName(childrenString);
+			parentNode = root.getNodeWithName(parent);
 			if(parentNode == null) {
 				
 				throw new TreeException("parent node wasn't found");//There's a method in Node that searches for a named node. 
