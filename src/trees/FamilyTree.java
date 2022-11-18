@@ -127,8 +127,7 @@ public class FamilyTree
 			addLine(line);
 		br.close();
 		fr.close();
-	}
-	
+	}// cOMMENTED
 	
 	//
 	// Line format is "parent:child1,child2 ..."
