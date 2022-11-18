@@ -69,7 +69,7 @@ public class FamilyTree
         {
             ArrayList<TreeNode> ancestors = new ArrayList<>();
             TreeNode current = new TreeNode(children.get(-1).getName());
-            for(int i = children.size(); i > 0; i--) {
+            for(int i = children.size()-1; i > 0; i--) {
             	ancestors.add(children.get(i).parent);
             }
 
