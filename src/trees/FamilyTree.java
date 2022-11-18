@@ -136,15 +136,16 @@ public class FamilyTree
 	private void addLine(String line) throws TreeException
 	{
 		// Extract parent and array of children.
-		int colonIndex = ?? should be the index of the colon in line.
-		if (colonIndex < 0)
-			?? throw a TreeException with a useful message
-		String parent = ?? The substring of line that starts at char #0 and ends just before colonIndex. Check the API for 
-				           class java.util.String, method substring(), if you need guidance.
-		String childrenString = ?? The substring of line that starts just after colonIndex and goes through the end of
-				                   the line. You'll use a different version of substring().
-		String[] childrenArray = ?? Call childrenString.split(). Check the API for details. The result will be an array
-				                    of strings, with the separating commas thrown away.
+		int colonIndex = line.indexOf(":");
+		if (colonIndex < 0) {
+			throw new TreeException ("colonIndex is less than 0");
+		}
+		String parent = line.substring(0, colonIndex); //The substring of line that starts at char #0 and ends just before colonIndex. Check the API for
+				           //class java.util.String, method substring(), if you need guidance.
+		String childrenString = line.substring(colonIndex+1); // The substring of line that starts just after colonIndex and goes through the end of
+				                   //the line. You'll use a different version of substring().
+		String[] childrenArray = childrenString.split(","); //Call childrenString.split(). Check the API for details. The result will be an array
+				                    //of strings, with the separating commas thrown away.
 		
 		// Find parent node. If root is null then the tree is empty and the
 		// parent node must be constructed. Otherwise the parent node should be 
